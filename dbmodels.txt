@@ -32,9 +32,9 @@ appliedJobs: Array of JobId,
 University
 ----------
 id: ObjectId
-name: ObjectId
-country: ObjectId
-students: ObjectId
+name: String
+country: String
+students: Array
 
 Skill
 -----
