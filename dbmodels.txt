@@ -1,0 +1,102 @@
+Entities
+
+User
+----
+id: ObjectId,
+fullName,
+userName,
+university: {
+  id: ObjectId,
+  name: String
+},
+gender: String,
+language: String,
+country: String,
+city: String,
+skills: Array,
+recommendations: Recommendation ObjectId,
+contacts: Array of UserId,
+socialNetwork : [
+  {
+    name: 'Facebook',
+    credentials: '3453nl35h384539450345k3lfgfv'
+  },
+  {
+    name: 'Google',
+    credentials: '3453nl35h38453_trfgn+9450345k3lfgfv'
+  }
+],
+savedJobs: Array of JobId,
+appliedJobs: Array of JobId,
+
+University
+----------
+id: ObjectId
+name: ObjectId
+country: ObjectId
+students: ObjectId
+
+Skill
+-----
+id
+name
+
+Recommendation
+---------------
+id: ObjectId
+from: ObjectId
+to: ObjectId
+message: String
+date: Date
+
+ForumQuestion
+--------
+id: ObjectId,
+question: String
+askedBy: ObjectId
+answers: Array [
+  ForumAnswerId
+],
+applause: Number,
+
+ForumAnswer
+-----------
+id: ObjectId
+forumQuestionId
+answerBy: ObjectId,
+answer: String,
+likes: Number
+
+Job
+----
+id: ObjectId
+title
+companyId: ObjectId
+salary: String
+description: String
+requirements: String
+applicants
+
+JobApplicant
+------------
+id: ObjectId
+userId: String,
+jobId: String,
+resume: String,
+message: String
+
+Recruiter
+-----------
+id: ObjectId
+fullName: String,
+companyId: ObjectId
+jobsPosted: Array of JobId
+
+
+Company
+----------
+id: ObjectId
+name: String,
+location: String,
+description: String,
+website: String,
