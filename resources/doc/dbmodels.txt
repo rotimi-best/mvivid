@@ -5,10 +5,7 @@ User
 id: ObjectId,
 fullName,
 userName,
-university: {
-  id: ObjectId,
-  name: String
-},
+university: ObjectId,
 gender: String,
 language: String,
 country: String,
@@ -28,6 +25,7 @@ socialNetwork : [
 ],
 savedJobs: Array of JobId,
 appliedJobs: Array of JobId,
+registeredDate: Date
 
 University
 ----------
