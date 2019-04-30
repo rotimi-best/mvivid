@@ -3,7 +3,9 @@ const timestamp = require('mongoose-timestamp');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
+  profileUrl: String,
   fullName: String,
+  description: String,
   userName: {
     type: String,
     required: true,
@@ -14,17 +16,18 @@ const UserSchema = new Schema({
     required: true,
     unique: true
   },
-  university: ObjectId,
+  university: Schema.ObjectId,
   gender: String,
+  password: String,
   language: String,
   country: String,
   city: String,
-  skills: [ObjectId],
-  recommendations: [ObjectId],
-  contacts: [ObjectId],
+  skills: [Schema.ObjectId],
+  recommendations: [Schema.ObjectId],
+  contacts: [Schema.ObjectId],
   socialNetworks: Array,
-  savedJobs: [ObjectId],
-  appliedJobs: [ObjectId],
+  savedJobs: [Schema.ObjectId],
+  appliedJobs: [Schema.ObjectId],
   registeredDate: {
     type: Date,
     default: Date.now()

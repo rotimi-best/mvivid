@@ -3,8 +3,8 @@ const { DB: { COLLECTIONS : { FORUM_ANSWER } } } = require('../../helpers/consta
 
 module.exports = {
   addForumAnswer: data => require('./templates/create')(ForumAnswerModel, FORUM_ANSWER, data),
-  getForumAnswer: (findFields, sortFields = null) => {
-    return require('./templates/read')(ForumAnswerModel, FORUM_ANSWER, findFields, sortFields);
+  getForumAnswer: (findFields = {}, sortFields = null, limitNo = null) => {
+    return require('./templates/read')(ForumAnswerModel, FORUM_ANSWER, findFields, sortFields, limitNo);
   },
   updateForumAnswer: (findField, setField) => require('./templates/update')(ForumAnswerModel, FORUM_ANSWER, findField, setField),
   deleteForumAnswer: findField => require('./templates/delete')(ForumAnswerModel, FORUM_ANSWER, findField)

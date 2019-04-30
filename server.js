@@ -1,18 +1,19 @@
 require('dotenv').config();
 
 const express = require("express");
-const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const { MONGO_URI } = require('./config/index');
+// TODO: Authenticate each route
+// const tokenChecker = require('./middlewares/tokenChecker');
 const { PORT = 5000 } = process.env;
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 mongoose
-  .connect(MONGO_URI, { useNewUrlParser: true })
+  .connect(MONGO_URI, { useNewUrlParser: true, useCreateIndex: true })
   .then(() => console.log(`MongoDB is connected`))
   .catch(error => console.log(`Mongodb connection error ${error}`));
 

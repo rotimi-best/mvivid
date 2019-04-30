@@ -1,0 +1,31 @@
+Routes and functions
+
+1. Jobs
+- search for jobs (GET) G +
+- view a job (GET) G +
+- view all jobs (GET) G +
+- post a job (POST) R +
+- edit a job (PUT) R +
+- delete a job (DELETE) R +
+- view applicants (GET) R +
+- Apply for a job (POST) S +
+- Bookmark job (POST) S +
+
+2. Forums
+- Get all questions S  +
+- Ask a question (POST) S +
+- Answer a question (POST) S 
+- Search for a question (GET) G +
+- view a question (GET) G
+
+3. People
+- See People +
+- Search People (GET) G +
+- view a person's profile (GET) G +
+- send a contact request (POST) G
+- Update profile (POST) G +
+- write a recommendation (POST) G +
+
+4. Authentication
+- Register (POST) G+
+- login (POST) G+
