@@ -3,8 +3,8 @@ const timestamp = require('mongoose-timestamp');
 const Schema = mongoose.Schema;
 
 const ForumAnswerSchema = new Schema({
-  forumQuestionId: ObjectId,
-  answeredBy: ObjectId,
+  forumQuestionId: Schema.ObjectId,
+  answeredBy: Schema.ObjectId,
   answer: String,
   likes: Number
 });

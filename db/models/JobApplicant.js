@@ -3,8 +3,8 @@ const timestamp = require('mongoose-timestamp');
 const Schema = mongoose.Schema;
 
 const JobApplicantSchema = new Schema({
-  userId: ObjectId,
-  jobId: ObjectId,
+  userId: Schema.ObjectId,
+  jobId: Schema.ObjectId,
   resumeUrl: String,
   message: String
 });

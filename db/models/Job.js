@@ -4,11 +4,13 @@ const Schema = mongoose.Schema;
 
 const JobSchema = new Schema({
   title: String,
-  companyId: ObjectId,
+  city: String,
+  companyId: Schema.ObjectId,
+  recruiterId: Schema.ObjectId,
   salary: String,
   description: String,
   requirements: String,
-  applicants: [ObjectId] // Id of Job applicant
+  applicants: [Schema.ObjectId]
 });
 
 JobSchema.plugin(timestamp);

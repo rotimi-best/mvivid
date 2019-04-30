@@ -3,9 +3,8 @@ const { DB: { COLLECTIONS : { RECOMMENDATION } } } = require('../../helpers/cons
 
 module.exports = {
   addRecommendation: data => require('./templates/create')(RecommendationModel, RECOMMENDATION, data),
-  getRecommendation: (findFields, sortFields = null) => {
-    return require('./templates/read')(RecommendationModel, RECOMMENDATION, findFields, sortFields);
-  },
+  getRecommendation: (findFields = {}, sortFields = null, limitNo = null) =>
+    require('./templates/read')(RecommendationModel, RECOMMENDATION, findFields, sortFields, limitNo),
   updateRecommendation: (findField, setField) => require('./templates/update')(RecommendationModel, RECOMMENDATION, findField, setField),
   deleteRecommendation: findField => require('./templates/delete')(RecommendationModel, RECOMMENDATION, findField)
 };

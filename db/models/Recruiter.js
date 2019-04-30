@@ -4,8 +4,9 @@ const Schema = mongoose.Schema;
 
 const RecruiterSchema = new Schema({
   fullName: String,
-  companyId: ObjectId,
-  jobsPosted: [ObjectId] // Ids of jobs model
+  companyId: Schema.ObjectId,
+  jobsPosted: [Schema.ObjectId], // Ids of jobs model
+  telegramChatId: Number
 });
 
 RecruiterSchema.plugin(timestamp);

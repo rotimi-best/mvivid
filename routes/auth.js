@@ -1,33 +1,76 @@
 const { PRIVATE_ACCESS_KEY, PRIVATE_REFRESH_KEY } = process.env;
-// const debug = require('debug')('/users');
+const debug = require('debug')('/auth');
 const express = require('express');
-// const CryptoJS = require("crypto-js");
-// const bcrypt = require('bcrypt-nodejs');
-// const jwt = require('jsonwebtoken');
-// const { getUserData } = require('../../Db/userData.js');
-// const { addUserSession, deleteUserSession } = require('../../Db/userSession.js');
-// const { CONSTANTS: { AUTH } } = require('../../helpers/constants');
-// const { genRandNum, len, log } = require('../../modules');
+const CryptoJS = require("crypto-js");
+const bcrypt = require('bcrypt-nodejs');
+const jwt = require('jsonwebtoken');
+const { addUser, getUser } = require('../db/methods/user');
+const { len } = require('../modules');
 const router = express.Router();
 
-// @route GET api/users/login
+// @route POST api/auth/register
+// @route Register a new user
+// @access Private
+router.post('/register', async (req, res) => {
+  const user = req.body;
+
+  if (!user.email || !user.password) {
+    return res.status(400).json({ error: true, message: 'User id and password needed' });
+  }
+
+  const oldUser = await getUser({ email: user.email })
+  
+  console.log('Old user', oldUser);
+
+  if (len(oldUser)) return res.status(400).json({ msg: 'User already exists' });
+
+  bcrypt.hash(user.password, null, null, async (error, hashedPassword) => {
+    if (error) {
+      debug(`Error in api/auth/register in hasing password`, error);
+
+      return res.status(400).json({ error: true, message: 'Error while saving creating user' });
+    }
+    console.log('hashed password', hashedPassword);
+
+    user.password = hashedPassword;
+    
+    const newUser = await addUser(user);
+
+    const expiresIn = `2 days`;
+
+    // Sign Token
+    const accessToken = jwt.sign({ _id: newUser._id }, PRIVATE_ACCESS_KEY, { expiresIn })
+    const refreshToken = jwt.sign({ _id: newUser._id }, PRIVATE_REFRESH_KEY);
+
+    res.json({
+      success: true,
+      access_token: accessToken,
+      refresh_token: refreshToken,
+      expires_in: expiresIn,
+      token_type: "bearer",
+      user_details: newUser
+    });
+  });
+});
+
+// @route POST api/auth/login
 // @route Login user
 // @access Private
 router.post('/login', async (req, res) => {
-  const { username = "", password = "" } = req.body;
+  const { email = "", password = "" } = req.body;
 
-  if (!len(username) || !len(password)) {
-    debug('Username and password was not given');
+  if (!len(email) || !len(password)) {
+    debug('Email and password was not given');
 
-    return res.status(400).json({ error: true, message: 'Username and password required' });
+    return res.status(400).json({ error: true, message: 'Email and password required' });
   }
 
   try {
-    // Find user by username
-    getUserData({ username })
-      .then(userData => {
+    // Find user by email
+    getUser({ email })
+      .then(user => {
         // Check if user found
-        if (!userData) {
+        if (!user) {
           return res.status(404).json({ error: true, message: 'User not found' });
         }
 
@@ -36,24 +79,16 @@ router.post('/login', async (req, res) => {
 
         try {
           // Check if password is valid
-          bcrypt.compare(decryptedPassword, userData[0].password, (err, valid) => {
+          bcrypt.compare(decryptedPassword, user[0].password, (err, valid) => {
             // Password is correct
             if (!err && valid) {
-              const [{ _id, username, fullname, role }] = userData;
+              const [{ _id }] = user;
 
-              const payload = { _id, username };
-              const expiresIn = genRandNum(AUTH.MIN_SEC, AUTH.MAX_SEC);
+              const expiresIn = `2 days`;
 
               // Sign Token
-              const accessToken = jwt.sign(payload, PRIVATE_ACCESS_KEY, { expiresIn })
-              const refreshToken = jwt.sign(payload, PRIVATE_REFRESH_KEY);
-
-              addUserSession({
-                userId: _id,
-                username,
-                accessToken,
-                refreshToken,
-              }).then(session => log(`\nSession added ${session}`));
+              const accessToken = jwt.sign({ _id }, PRIVATE_ACCESS_KEY, { expiresIn })
+              const refreshToken = jwt.sign({ _id }, PRIVATE_REFRESH_KEY);
 
               res.json({
                 success: true,
@@ -61,47 +96,23 @@ router.post('/login', async (req, res) => {
                 refresh_token: refreshToken,
                 expires_in: expiresIn,
                 token_type: "bearer",
-                user_details: {
-                  username,
-                  fullname,
-                  role
-                }
+                user_details: user
               });
             } else {
-              return res.status(400).json({ error: true, message: 'Password incorrect' });
+              return res.status(400).json({ error: true, message: 'Incorrect Password' });
             }
           })
         } catch (error) {
-          debug(`Error in api/users/login in comparing passwords ${error}`);
+          debug(`Error in api/auth/login in comparing passwords ${error}`);
 
           return res.status(500).json({ error: true, message: 'An error occured, now on a coffee break' });
         }
       })
   } catch (error) {
-    debug(`Error in api/users/login in finding user ${error}`);
+    debug(`Error in api/auth/login in finding user ${error}`);
 
     return res.status(500).json({ error: true, message: 'An error occured, on a coffee break ;)' });
   }
-});
-
-// @route GET api/users/logout
-// @route Logout user
-// @access Private
-router.post('/logout', async (req, res) => {
-  const { username, refresh_token } = req.body;
-
-  if (!username || !refresh_token) {
-    return req.status(400).json({ error: true, message: 'User id and token needed' });
-  }
-
-  deleteUserSession({ username, refreshToken: refresh_token })
-    .then(user => {
-      if (!user.result.n) {
-        return res.status(404).json({ error: false, message: 'Invalid user' });
-      }
-
-      res.json({ success: true });
-    });
 });
 
 module.exports = router;

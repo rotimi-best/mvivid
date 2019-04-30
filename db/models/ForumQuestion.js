@@ -3,10 +3,12 @@ const timestamp = require('mongoose-timestamp');
 const Schema = mongoose.Schema;
 
 const ForumQuestionSchema = new Schema({
+  title: String,
   question: String,
-  askedBy: ObjectId,
-  answers: [ObjectId],
-  applause: Number
+  askedBy: Schema.ObjectId,
+  answers: [Schema.ObjectId],
+  applause: Number,
+  tags: [String]
 });
 
 ForumQuestionSchema.plugin(timestamp);
