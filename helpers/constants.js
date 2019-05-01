@@ -10,7 +10,8 @@ module.exports = {
       RECRUITER: 'recruiter',
       SKILL: 'skill',
       UNIVERSITY: 'university',
-      USER: 'user'
+      USER: 'user',
+      JOB_CATEGORY: 'jobCategory'
     }
   }
 }

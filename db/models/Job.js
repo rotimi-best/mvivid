@@ -10,7 +10,8 @@ const JobSchema = new Schema({
   salary: String,
   description: String,
   requirements: String,
-  applicants: [Schema.ObjectId]
+  applicants: [Schema.ObjectId],
+  category: Schema.ObjectId
 });
 
 JobSchema.plugin(timestamp);
