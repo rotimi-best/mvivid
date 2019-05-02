@@ -16,6 +16,7 @@ import {
 
 // Assets
 import './css/index.css';
+// import Logo from "images/brand.png";
 
 export default function NotSignedIn() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +36,7 @@ export default function NotSignedIn() {
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/job">Jobs</NavLink>
+                <NavLink href="/jobs">Jobs</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/people">People</NavLink>
@@ -51,7 +52,7 @@ export default function NotSignedIn() {
                   <DropdownItem href="/login">
                     Student
                   </DropdownItem>
-                  <DropdownItem href="employer/login">
+                  <DropdownItem href="employer">
                     Employer
                   </DropdownItem>
                 </DropdownMenu>
