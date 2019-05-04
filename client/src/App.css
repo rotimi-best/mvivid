@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 h1, h2 {
   font-family: 'Open Sans', sans-serif;
 }
@@ -12,6 +17,12 @@ h1, h2 {
   color: white;
 }
 
+.ComponentBodyContainer {
+  margin: 20px auto;
+  min-height: 85vh;
+  /* border: 1px solid grey; */
+}
+
 .OrangeText {
   border-bottom: 5px solid #FF9A00;
   border-bottom-left-radius: 10%;
@@ -23,4 +34,25 @@ h1, h2 {
   color: #FF9A00;
   border: 0;
   transition: 0.5s;
+}
+
+.SearchResultContainer {
+  border: 1px solid #e9ebed;
+  padding: 15px 20px;
+}
+
+.SearchResultIconCol {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  align-items: center;
+}
+
+.SearchResultIconCol i {
+  padding: 0 10px;
+  /* color: #F9CD8B; */
+}
+
+.SearchResultIconCol p {
+  margin: 0;
 }

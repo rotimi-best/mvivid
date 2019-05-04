@@ -1,0 +1,15 @@
+.JobProfile {
+  line-height: 2rem;
+}
+
+@media (min-width: 992px) {
+  .JobProfile .Company {
+    border-right: 7px solid black;
+  }
+}
+
+@media (max-width: 768px) {
+  .JobProfile .JobProfileHeaderDetail p {
+    padding: 0 1rem 0 0 !important;
+  }
+}

@@ -1,0 +1,6 @@
+
+@media (min-width: 992px) { 
+  .PeopleSearchResult img {
+    max-width: 4rem
+  }
+}

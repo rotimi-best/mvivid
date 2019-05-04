@@ -18,25 +18,25 @@ export default function Employer() {
         <Row className="EmployerCategories">
           <Col className="EmployerCategory col-md-3 col-sm-12">
             <Card body>
-              <i class="fas fa-pen"></i>
+              <i className="fas fa-pen"></i>
               <h4>Post a Job</h4>
             </Card>
           </Col>
           <Col className="EmployerCategory col-md-3 col-sm-12">
             <Card body>
-              <i class="fas fa-running"></i>
+              <i className="fas fa-running"></i>
               <h4>Students apply</h4>
             </Card>
           </Col>
           <Col className="EmployerCategory col-md-3 col-sm-12">
             <Card body>
-              <i class="far fa-hand-pointer"></i>
+              <i className="far fa-hand-pointer"></i>
               <h4>You pick</h4>
             </Card>
           </Col>
           <Col className="EmployerCategory col-md-3 col-sm-12">
             <Card body>
-              <i class="far fa-thumbs-up"></i>
+              <i className="far fa-thumbs-up"></i>
               <h4>Thank us later</h4>
             </Card>
           </Col>

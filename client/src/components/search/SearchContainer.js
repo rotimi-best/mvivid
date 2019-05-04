@@ -9,11 +9,12 @@ import {
 import "./css/index.css";
 
 export default function SearchContainer(props) {
-
+  const { header } = props;
+  
   return (
     <section className="SearchContainerSection d-flex flex-column">
       <Container className="SearchContainer">
-          <h3>Find the job of your choice</h3>
+          <h3>{header}</h3>
         {/* <Row className="mt-2 mb-2"> */}
           {/* <Col className="SearchContainerCol">Jobs</Col>
           <Col className="SearchContainerCol">People</Col>
