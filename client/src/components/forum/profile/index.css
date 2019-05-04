@@ -1,0 +1,38 @@
+.QuestionByCol,
+.AnswerByCol {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  align-items: center;
+  line-height: 3rem;
+}
+
+.PeopleProfile i {
+  font-size: 4rem
+}
+
+.PeopleProfile .Box {
+  margin: 3rem auto;
+}
+
+@media (max-width: 992px) {
+  .PeopleProfile i {
+    font-size: 2rem
+  }
+
+  .QuestionByCol,
+  .AnswerByCol {
+    line-height: 1rem;
+  }
+
+  .QuestionByIcon,
+  .AnswerByIcon {
+    margin-bottom: 1rem;
+  }
+
+  .QuestionByUserName,
+  .AnswerByUserName {
+    text-align: center;
+    font-size: 12px;
+  }
+}
