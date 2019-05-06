@@ -90,3 +90,8 @@
   font-size: 4em;
   margin: 10px auto;
 }
+
+.EmployerCategory:hover {
+  color: #FF9A00;
+  transition: 0.4s;
+}

@@ -1,0 +1,12 @@
+.PeopleProfileHeader img {
+  max-width: 152px;
+  max-height: 152px;
+  border-radius: 50%;
+}
+
+@media (max-width: 992px) {
+  .PeopleProfileHeader img {
+    max-width: 128px;
+    max-height: 128px;
+  }
+}
