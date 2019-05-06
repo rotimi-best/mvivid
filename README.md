@@ -1,6 +1,9 @@
 # mVivid
 It means `more vivid`. It is a mini Linkedin PWA (Progressive Web App) for students. The goal of the app is to bring out the light in others meaning to help them find opportunities around them to use their inbuilt gifts and talents. To achieve this students can find jobs, find other students who can offer certain skills (like photography), share their skills and businesses with other students and a mini stackoverflow flow asking student related questions.
 
+## Tech Stack
+This app is built on a MERN (MongoDB, Express.js, React.js, Node.js) stack and I plan on hosting it on GCP (Google Cloud Platform) using their free tier.
+
 ## Philosophy
 We believe that in everyone has the capacity and ability to change the world and each person has something to offer the world.
 
