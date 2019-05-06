@@ -56,3 +56,22 @@ h1, h2 {
 .SearchResultIconCol p {
   margin: 0;
 }
+
+.AskButton {
+  background-color: #FF9A00;
+  padding: 0.8em;
+  max-height: 3rem;
+  color: #FFF !important;
+  border: 1px solid transparent;
+  outline: none;
+  white-space: nowrap !important;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.AskButton:hover {
+  cursor: pointer;
+  color: rgb(0, 0, 0) !important;
+  transform: 10s;
+  transition: 0.5s;
+}

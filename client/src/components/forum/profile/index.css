@@ -1,5 +1,4 @@
-.QuestionByCol,
-.AnswerByCol {
+.ForumUserProfile {
   display: flex;
   flex-direction: column;
   margin: 0px;
@@ -8,30 +7,33 @@
 }
 
 .PeopleProfile i {
-  font-size: 4rem
+  font-size: 2rem
 }
 
-.PeopleProfile .Box {
-  margin: 3rem auto;
+.PeopleProfile .ForumBox {
+  margin: 2rem auto;
+  border-bottom: 1px solid #e4e6e8;
+}
+
+.AnswersStats,
+.ForumQuestion {
+  width: 100%;
+  border-bottom: 1px solid #e4e6e8;
+  margin-bottom: 10px;
+  clear: both;
 }
 
 @media (max-width: 992px) {
   .PeopleProfile i {
-    font-size: 2rem
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
   }
 
-  .QuestionByCol,
-  .AnswerByCol {
+  .ForumUserProfile {
     line-height: 1rem;
   }
 
-  .QuestionByIcon,
-  .AnswerByIcon {
-    margin-bottom: 1rem;
-  }
-
-  .QuestionByUserName,
-  .AnswerByUserName {
+  .ForumUserName {
     text-align: center;
     font-size: 12px;
   }

@@ -14,7 +14,7 @@ export default function JobProfile() {
         <Col className="col-md-auto">
           <h2>Web Developer</h2>
           <div className="d-inline-flex JobProfileHeaderDetail">
-            <p className="Company py-1 px-3"><a color="link" href="https://amazon.com" target="_blank" el="noopener noreferrer">Amazon</a></p>
+            <p className="Company py-1 px-3"><a color="link" href="https://amazon.com" target="_blank" rel="noopener noreferrer">Amazon</a></p>
             <p className="py-1 px-3">Odessa Ukraine</p>
           </div>
         </Col>
