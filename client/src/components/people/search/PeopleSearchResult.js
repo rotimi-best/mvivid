@@ -8,7 +8,7 @@ export default function PeopleSearchResult() {
       <Container className="SearchResultContainer">
         <Row className="SearchResultDecscription">
           <Col className="col-2 col-sm-2 col-md-1">
-            <img src="http://tinygraphs.com/spaceinvaders/tech?theme=sugarsweets&numcolors=4&size=220&fmt=svg" alt="" class="rounded-circle border border-light"></img>
+            <img src="http://tinygraphs.com/spaceinvaders/tech?theme=sugarsweets&numcolors=4&size=220&fmt=svg" alt="" className="rounded-circle border border-light"></img>
           </Col>
           <Col className="col-10 col-sm-10 col-md-11">
             <h3><a color="link" href="/people/100">Vitaliy Rudenko</a></h3>
@@ -34,7 +34,7 @@ export default function PeopleSearchResult() {
       <Container className="SearchResultContainer">
         <Row className="SearchResultDecscription">
           <Col className="col-2 col-sm-2 col-md-1">
-            <img src="http://tinygraphs.com/spaceinvaders/universe?theme=sugarsweets&numcolors=4&size=220&fmt=svg" alt="" class="rounded-circle border border-light"></img>
+            <img src="http://tinygraphs.com/spaceinvaders/universe?theme=sugarsweets&numcolors=4&size=220&fmt=svg" alt="" className="rounded-circle border border-light"></img>
           </Col>
           <Col className="col-10 col-sm-10 col-md-11">
             <h3><a color="link" href="/people/100">Vitaliy Rudenko</a></h3>
@@ -60,7 +60,7 @@ export default function PeopleSearchResult() {
       <Container className="SearchResultContainer">
         <Row className="SearchResultDecscription">
           <Col className="col-2 col-sm-2 col-md-1">
-            <img src="http://tinygraphs.com/squares/saa?theme=berrypie&numcolors=4&size=220&fmt=svg" alt="" class="rounded-circle border border-light"></img>
+            <img src="http://tinygraphs.com/squares/saa?theme=berrypie&numcolors=4&size=220&fmt=svg" alt="" className="rounded-circle border border-light"></img>
           </Col>
           <Col className="col-10 col-sm-10 col-md-11">
             <h3><a color="link" href="/people/100">Vitaliy Rudenko</a></h3>

@@ -13,15 +13,15 @@ export default function Recommendation(props) {
   
   const selectImage = name => {
     const i = genRandNum(0, RANDOM_AVATARS.USER_AVATAR.length - 1);
-    const image = RANDOM_AVATARS.USER_AVATAR[i].replace("--name--", name);
+    const image = RANDOM_AVATARS.USER_AVATAR[i]
+      .replace("--name--", name)
+      .replace("--theme--", "heatwave");
 
-    console.log(image);
     return RANDOM_AVATARS.USER_AVATAR[i];
   };
 
   return (
     <Container>
-      <h2>Recommendation</h2>
       <Row>
         <Col>
           <img src={selectImage("Ted Delker")} alt="Ted Delker"/>
