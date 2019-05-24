@@ -2,7 +2,7 @@ module.exports = (collectionModel, collectionName, findParams, sortParams = null
   return new Promise((resolve, reject) => {
     console.log(`Reading a document from ${collectionName} collection`);
     const options = {};
-
+console.log('params', findParams)
     if (sortParams) {
       options.sort = sortParams;
     }

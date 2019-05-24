@@ -36,7 +36,7 @@ router.post('/register', async (req, res) => {
     
     const newUser = await addUser(user);
 
-    const expiresIn = `2 days`;
+    const expiresIn = `10 days`;
 
     // Sign Token
     const accessToken = jwt.sign({ _id: newUser._id }, PRIVATE_ACCESS_KEY, { expiresIn })

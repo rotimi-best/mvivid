@@ -15,6 +15,42 @@ router.get('/', async (req, res) => {
   res.json({ users });
 });
 
+// @route GET api/people/search
+// @desc Search for people
+// @access Public
+// @example /search?query=vitali&city=odessa
+router.get('/search', async (req, res) => {
+  const { query = "", city = "" } = req.query;
+
+  console.log("query",query,"city", city)
+
+  const people = await getUser({
+    $or: [
+      { city: {"$regex": city, "$options": "i"}},
+      { fullName: {"$regex": query, "$options": "i"} },
+      { description: {"$regex": query, "$options": "i"} },
+      // { skills: `/${query}/i` }
+    ]
+  });
+
+  console.log('People found', people);
+
+  res.json({ people });
+});
+
+// @route PUT api/people
+// @desc Update a profile
+// @access Private
+router.put('/', async (req, res) => {
+  const update = req.body;
+
+  await updateUser({ _id: update._id }, { ...update });
+
+  console.log('Updating a User');
+
+  res.json({ success: true });
+});
+
 // @route GET api/people/:id
 // @desc Get a user profile
 // @access Public
@@ -48,40 +84,6 @@ router.get('/:id', async (req, res) => {
   console.log('Job found', user);
 
   res.json({ user });
-});
-
-// @route GET api/people/search
-// @desc Search for people
-// @access Public
-// @example /search?query=vitali&city=odessa
-router.get('/search', async (req, res) => {
-  const { query = "", city = "" } = req.params;
-
-  const people = await getUser({
-    city: `/${city}/i`,
-    $or: [
-      { fullName: `/${query}/i` },
-      { description: `/${query}/i` },
-      { skills: `/${query}/i` }
-    ]
-  });
-
-  console.log('People found', people);
-
-  res.json({ people });
-});
-
-// @route PUT api/people
-// @desc Update a profile
-// @access Private
-router.put('/', async (req, res) => {
-  const update = req.body;
-
-  await updateUser({ _id: update._id }, { ...update });
-
-  console.log('Updating a User');
-
-  res.json({ success: true });
 });
 
 // @route POST api/people/recommendation
