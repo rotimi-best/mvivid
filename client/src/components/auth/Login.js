@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, FormFeedback, Label, Input, FormText } from 'reactstrap';
+import { withRouter } from "react-router-dom";
 
-export default function Login() {
+function Login(props) {
   const [form, setForm] = useState({
     email: "",
     password: ""
@@ -72,6 +73,8 @@ export default function Login() {
           text: "Successful"
         }
       });
+
+      props.history.push('/');
   }
 
   return (
@@ -106,3 +109,5 @@ export default function Login() {
     </Form>
   )
 }
+
+export default withRouter(Login)

@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import { 
   Container,
   Row,
@@ -9,7 +10,13 @@ import {
 
 import './css/index.css';
 
-export default function Employer() {
+export default withRouter((props) => {
+
+  const handleClick = e => {
+    e.preventDefault();
+
+    props.history.push("/login");
+  }
 
   return (
     <section className="EmployerSection">
@@ -41,8 +48,8 @@ export default function Employer() {
             </Card>
           </Col>
         </Row>
-        <Button color="warning"> Find Students</Button>
+        <Button onClick={handleClick} color="warning"> Find Students</Button>
       </Container>
     </section>
   );
-}
+})

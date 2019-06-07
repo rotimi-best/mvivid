@@ -44,7 +44,10 @@ export default function NotSignedIn() {
               <NavItem>
                 <NavLink href="/forum">Forum</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
+              <NavItem>
+                <NavLink href="/login">Login</NavLink>
+              </NavItem>
+              {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   Login
                 </DropdownToggle>
@@ -56,7 +59,7 @@ export default function NotSignedIn() {
                     Employer
                   </DropdownItem>
                 </DropdownMenu>
-              </UncontrolledDropdown>
+              </UncontrolledDropdown> */}
             </Nav>
           </Collapse>
         </Container>

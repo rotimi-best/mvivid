@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 import {
   Container,
   Row, 
@@ -6,7 +7,13 @@ import {
   Button
 } from "reactstrap";
 
-export default function DoMore() {
+export default withRouter((props) => {
+
+  const handleClick = e => {
+    e.preventDefault();
+
+    props.history.push("/login");
+  }
 
   return (
     <section className="DoMoreSection">
@@ -29,8 +36,8 @@ export default function DoMore() {
             <p>Ask any question about jobs, your country, university or any topic of your choice</p>
           </Col>
         </Row>
-        <Button outline color="warning">Start your Journey</Button>
+        <Button onClick={handleClick} outline color="warning">Start your Journey</Button>
       </Container>
     </section>
   )
-}
+})

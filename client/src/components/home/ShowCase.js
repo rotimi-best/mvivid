@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router'
+import { withRouter } from "react-router-dom";
 import { Container, Button } from 'reactstrap';
 
 import './css/index.css';
 import Background from "../../assets/home_background.jpg";
 
-export default function ShowCase() {
+export default withRouter((props) => {
   const [redirect, setRedirect] = useState(false);
 
   const style = {
@@ -20,6 +20,8 @@ export default function ShowCase() {
     e.preventDefault();
 
     setRedirect(!redirect);
+
+    props.history.push('/login');
   }
 
   return (
@@ -34,4 +36,4 @@ export default function ShowCase() {
       </div>
     </section>
   );
-}
+})

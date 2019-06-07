@@ -47,7 +47,7 @@ export default function Authenticate() {
         <TabPane tabId="1">
           <Row>
             <Col sm="12">
-              <Login />
+              <Login someProp={"Hey there"}/>
             </Col>
           </Row>
         </TabPane>
