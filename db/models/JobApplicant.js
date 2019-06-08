@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const timestamp = require('mongoose-timestamp');
 const Schema = mongoose.Schema;
 
+const { DB: { COLLECTIONS : { JOB_APPLICANT } } } = require('../../helpers/constants');
+
 const JobApplicantSchema = new Schema({
   userId: Schema.ObjectId,
   jobId: Schema.ObjectId,
@@ -11,4 +13,4 @@ const JobApplicantSchema = new Schema({
 
 JobApplicantSchema.plugin(timestamp);
 
-module.exports = JobApplicant = mongoose.model('jobApplicant', JobApplicantSchema);
+module.exports = JobApplicant = mongoose.model(JOB_APPLICANT, JobApplicantSchema, JOB_APPLICANT);

@@ -13,6 +13,8 @@ const router = express.Router();
 // @access Private
 router.post('/register', async (req, res) => {
   const user = req.body;
+  
+  console.log(req);
 
   if (!user.email || !user.password) {
     return res.status(400).json({ error: true, message: 'User id and password needed' });
@@ -73,13 +75,13 @@ router.post('/login', async (req, res) => {
         if (!user) {
           return res.status(404).json({ error: true, message: 'User not found' });
         }
-
-        const passwordBytes  = CryptoJS.AES.decrypt(password, PRIVATE_ACCESS_KEY);
-        const decryptedPassword = passwordBytes.toString(CryptoJS.enc.Utf8);
+        console.log(user, password, user[0].password, password === user[0].password)
+        // const passwordBytes  = CryptoJS.AES.decrypt(password, PRIVATE_ACCESS_KEY);
+        // const decryptedPassword = passwordBytes.toString(CryptoJS.enc.Utf8);
 
         try {
-          // Check if password is valid
-          bcrypt.compare(decryptedPassword, user[0].password, (err, valid) => {
+          // Compare plain password with hash
+          bcrypt.compare(password, user[0].password, (err, valid) => {
             // Password is correct
             if (!err && valid) {
               const [{ _id }] = user;

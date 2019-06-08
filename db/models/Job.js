@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const timestamp = require('mongoose-timestamp');
 const Schema = mongoose.Schema;
 
+const { DB: { COLLECTIONS : { JOB } } } = require('../../helpers/constants');
+
 const JobSchema = new Schema({
   title: String,
   city: String,
@@ -16,4 +18,4 @@ const JobSchema = new Schema({
 
 JobSchema.plugin(timestamp);
 
-module.exports = Job = mongoose.model('job', JobSchema);
+module.exports = Job = mongoose.model(JOB, JobSchema, JOB);

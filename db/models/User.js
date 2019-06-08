@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const timestamp = require('mongoose-timestamp');
 const Schema = mongoose.Schema;
 
+const { DB: { COLLECTIONS : { USER } } } = require('../../helpers/constants');
+
 const UserSchema = new Schema({
   profileUrl: String,
   fullName: String,
@@ -36,4 +38,4 @@ const UserSchema = new Schema({
 
 UserSchema.plugin(timestamp);
 
-module.exports = User = mongoose.model('user', UserSchema);
+module.exports = User = mongoose.model(USER, UserSchema, USER);
