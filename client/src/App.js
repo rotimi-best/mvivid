@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NotSignedIn from "./components/navigation/NotSignedIn";
@@ -14,9 +14,16 @@ import Authenticate from "./components/auth";
 import Footer from "./components/footer";
 
 import store from "./store";
+import { loadUser } from "./redux/actions/authActions";
 import "./App.css";
 
 function App() {
+
+  // COMPONENT DID MOUNT
+  useEffect(() => {
+    store.dispatch(loadUser())
+  }, []);
+
   return (
     <Provider store={store}>
       <Router>

@@ -3,7 +3,7 @@ const { PRIVATE_ACCESS_KEY } = process.env;
 const jwt = require('jsonwebtoken')
 
 module.exports = (req, res, next) => {
-  const access_token = req.body.access_token || req.query.access_token;
+  const access_token = req.header('x-auth-token') || req.query.access_token || req.body.access_token;
 
   if (!access_token) {
     return res.status(401).json({ error: true, message: 'Authorization token needed' });
